@@ -43,9 +43,9 @@ variable "security_group_config" {
   }
 }
 
-variable "security_group_rule_config" {
-  description = "Security group rule configuration for allowing access to application port"
-  type = object({
+variable "security_group_rule_configs" {
+  description = "Security group rules configuration for allowing access to application ports"
+  type = list(object({
     type        = string
     ip_protocol = string
     nic_type    = string
@@ -53,8 +53,8 @@ variable "security_group_rule_config" {
     port_range  = string
     priority    = number
     cidr_ip     = string
-  })
-  default = {
+  }))
+  default = [{
     type        = "ingress"
     ip_protocol = "tcp"
     nic_type    = "intranet"
@@ -62,26 +62,7 @@ variable "security_group_rule_config" {
     port_range  = "8000/8000"
     priority    = 1
     cidr_ip     = "192.168.0.0/24"
-  }
-}
-
-variable "ram_user_config" {
-  description = "RAM user configuration for service access authorization"
-  type = object({
-    name = string
-  })
-}
-
-variable "ram_policy_attachment_config" {
-  description = "RAM policy attachment configuration"
-  type = object({
-    policy_type = string
-    policy_name = string
-  })
-  default = {
-    policy_type = "System"
-    policy_name = "AliyunLogFullAccess"
-  }
+  }]
 }
 
 variable "instance_config" {

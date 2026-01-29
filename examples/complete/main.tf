@@ -53,7 +53,7 @@ module "ai_observability_system" {
     description         = var.security_group_description
   }
 
-  security_group_rule_config = {
+  security_group_rule_configs = [{
     type        = "ingress"
     ip_protocol = "tcp"
     nic_type    = "intranet"
@@ -61,7 +61,7 @@ module "ai_observability_system" {
     port_range  = "8000/8000"
     priority    = 1
     cidr_ip     = var.allow_public_access ? "0.0.0.0/0" : var.vswitch_cidr_block
-  }
+  }]
 
   instance_config = {
     image_id                   = data.alicloud_images.default.images[0].id
@@ -76,10 +76,6 @@ module "ai_observability_system" {
     app_name    = var.arms_app_name
     is_public   = var.arms_is_public
     license_key = var.arms_license_key
-  }
-
-  ram_user_config = {
-    name = "tf-module-user-${random_string.suffix.id}"
   }
 
   bai_lian_config = {

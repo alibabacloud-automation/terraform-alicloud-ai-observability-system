@@ -35,18 +35,7 @@ output "application_access_info" {
   value       = module.ai_observability_system.application_access_info
 }
 
-output "region" {
-  description = "The region where resources are deployed"
-  value       = module.ai_observability_system.region
-}
-
-
 output "security_group_id" {
   description = "The ID of the security group"
   value       = module.ai_observability_system.security_group_id
-}
-
-output "ram_user_name" {
-  description = "The name of the created RAM user"
-  value       = module.ai_observability_system.ram_user_name
 }
