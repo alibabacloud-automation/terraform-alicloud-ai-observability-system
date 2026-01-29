@@ -46,33 +46,17 @@ resource "alicloud_security_group" "security_group" {
   description         = var.security_group_config.description
 }
 
-# Create security group rule to allow access to the application port
-resource "alicloud_security_group_rule" "allow_app_port" {
-  type              = var.security_group_rule_config.type
-  ip_protocol       = var.security_group_rule_config.ip_protocol
-  nic_type          = var.security_group_rule_config.nic_type
-  policy            = var.security_group_rule_config.policy
-  port_range        = var.security_group_rule_config.port_range
-  priority          = var.security_group_rule_config.priority
+# Create security group rules to allow access to the application ports
+resource "alicloud_security_group_rule" "allow_app_ports" {
+  for_each          = { for i, rule in var.security_group_rule_configs : "${rule.type}-${i}" => rule }
+  type              = each.value.type
+  ip_protocol       = each.value.ip_protocol
+  nic_type          = each.value.nic_type
+  policy            = each.value.policy
+  port_range        = each.value.port_range
+  priority          = each.value.priority
   security_group_id = alicloud_security_group.security_group.id
-  cidr_ip           = var.security_group_rule_config.cidr_ip
-}
-
-# Create a RAM user for service access authorization
-resource "alicloud_ram_user" "ram_user" {
-  name = var.ram_user_config.name
-}
-
-# Generate access key for the RAM user
-resource "alicloud_ram_access_key" "ram_access_key" {
-  user_name = alicloud_ram_user.ram_user.name
-}
-
-# Attach system policy to RAM user for log service access
-resource "alicloud_ram_user_policy_attachment" "attach_policy_to_user" {
-  user_name   = alicloud_ram_user.ram_user.name
-  policy_type = var.ram_policy_attachment_config.policy_type
-  policy_name = var.ram_policy_attachment_config.policy_name
+  cidr_ip           = each.value.cidr_ip
 }
 
 # Create ECS instance for hosting the AI application

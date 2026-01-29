@@ -26,21 +26,6 @@ output "security_group_id" {
   value       = alicloud_security_group.security_group.id
 }
 
-output "ram_user_name" {
-  description = "The name of the RAM user"
-  value       = alicloud_ram_user.ram_user.name
-}
-
-output "ram_access_key_id" {
-  description = "The access key ID of the RAM user"
-  value       = alicloud_ram_access_key.ram_access_key.id
-}
-
-output "ram_access_key_secret" {
-  description = "The access key secret of the RAM user"
-  value       = alicloud_ram_access_key.ram_access_key.secret
-  sensitive   = true
-}
 
 output "instance_id" {
   description = "The ID of the ECS instance"
@@ -65,11 +50,6 @@ output "ecs_command_id" {
 output "ecs_invocation_id" {
   description = "The ID of the ECS command invocation"
   value       = var.enable_ecs_invocation ? alicloud_ecs_invocation.invoke_script[0].id : null
-}
-
-output "region" {
-  description = "The region where resources are deployed"
-  value       = data.alicloud_regions.current.regions[0].region_id
 }
 
 output "ecs_login_address" {

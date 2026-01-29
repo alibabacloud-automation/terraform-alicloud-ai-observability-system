@@ -9,7 +9,6 @@ This example creates:
 - A VPC with a VSwitch for network isolation
 - A security group with rules for application access
 - An ECS instance to host the AI application
-- A RAM user with necessary permissions for log access
 - ECS commands to deploy and configure the AI application with ARMS monitoring
 
 ## Prerequisites
@@ -90,7 +89,7 @@ After successful deployment, you'll get:
 - `instance_public_ip`: Public IP address of the ECS instance
 - `ecs_login_address`: Direct link to ECS web console
 - `application_access_info`: Complete information for accessing the AI application
-- Resource IDs for VPC, security group, RAM user, etc.
+- Resource IDs for VPC, security group, etc.
 
 ## API Usage Examples
 
@@ -152,5 +151,4 @@ terraform destroy
 - Use strong passwords for ECS instances
 - Regularly rotate API keys and access credentials
 - Monitor resource access through ARMS and CloudTrail
-- Follow the principle of least privilege for RAM users
 - Consider using private access only for production workloads
