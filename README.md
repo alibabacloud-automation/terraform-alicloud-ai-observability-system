@@ -1,21 +1,13 @@
-# Alicloud AI Application Observability System Terraform Module
+Alicloud AI Application Observability System Terraform Module
 
-================================================ 
+# terraform-alicloud-ai-observability-system
 
-terraform-alicloud-ai-observability-system
-
-English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-ai-observability-system/blob/master/README-CN.md)
-
-## Description
+English | [简体中文](https://github.com/alibabacloud-automation/terraform-alicloud-ai-observability-system/blob/main/README-CN.md)
 
 Terraform module which creates an observability system for AI applications at low cost using ARMS monitoring on Alibaba Cloud. This module provides a complete infrastructure solution for deploying and monitoring AI applications with real-time observability capabilities.
 
-This module automatically provisions:
-- VPC network infrastructure with secure isolation
-- ECS instances optimized for AI application hosting
-- ARMS monitoring integration for comprehensive observability
-- Security groups with configurable access rules
-- Automated AI application deployment with monitoring capabilities (optional)
+For more information about this solution, please refer to the [Building a Security Protection System for Large Model Applications](https://www.aliyun.com/solution/tech-solution/build-an-obsearvability-system-for-ai-applications-at-low-costs).
+
 
 ## Usage
 
@@ -75,23 +67,6 @@ module "ai_observability_system" {
 
 * [Complete Example](https://github.com/alibabacloud-automation/terraform-alicloud-ai-observability-system/tree/main/examples/complete)
 
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.210.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1 |
-
-## Prerequisites
-
-Before using this module, ensure you have:
-
-1. **Alibaba Cloud Account**: With sufficient permissions to create VPC, ECS, RAM, and ARMS resources
-2. **ARMS License Key**: Obtain from [DescribeTraceLicenseKey API](https://api.aliyun.com/api/ARMS/2019-08-08/DescribeTraceLicenseKey)
-3. **Bailian API Key**: Obtain from [Model Studio](https://help.aliyun.com/zh/model-studio/developer-reference/get-api-key)
-4. **Terraform**: Version >= 1.0
-5. **Alibaba Cloud Provider**: Version >= 1.210.0
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -105,7 +80,7 @@ Before using this module, ensure you have:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | 1.269.0 |
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | >= 1.210.0 |
 
 ## Modules
 

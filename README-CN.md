@@ -1,21 +1,13 @@
-# 阿里云 AI 应用可观测性系统 Terraform 模块
+阿里云 AI 应用可观测性系统 Terraform 模块
 
-================================================ 
+# terraform-alicloud-ai-observability-system
 
-terraform-alicloud-ai-observability-system
-
-[English](https://github.com/terraform-alicloud-modules/terraform-alicloud-ai-observability-system/blob/master/README.md) | 简体中文
-
-## 描述
+[English](https://github.com/alibabacloud-automation/terraform-alicloud-ai-observability-system/blob/main/README.md) | 简体中文
 
 使用阿里云 ARMS 监控为 AI 应用构建低成本可观测性系统的 Terraform 模块。该模块提供了一个完整的基础设施解决方案，用于部署和监控具有实时可观测性能力的 AI 应用。
 
-该模块自动提供：
-- 具有安全隔离的 VPC 网络基础设施
-- 为 AI 应用托管优化的 ECS 实例
-- 用于全面可观测性的 ARMS 监控集成
-- 具有可配置访问规则的安全组
-- 具有监控功能的自动化 AI 应用部署（可选）
+有关此解决方案的更多信息，请参阅[低成本搭建 AI 应用全链路可观测体系](https://www.aliyun.com/solution/tech-solution/build-an-obsearvability-system-for-ai-applications-at-low-costs)。
+
 
 ## 使用方法
 
@@ -75,24 +67,6 @@ module "ai_observability_system" {
 
 * [完整示例](https://github.com/alibabacloud-automation/terraform-alicloud-ai-observability-system/tree/main/examples/complete)
 
-## 依赖要求
-
-| 名称 | 版本 |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.210.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1 |
-
-## 前置条件
-
-在使用此模块之前，请确保您具有：
-
-1. **阿里云账户**：具有创建 VPC、ECS、RAM 和 ARMS 资源的充分权限
-2. **ARMS 许可证密钥**：从 [DescribeTraceLicenseKey API](https://api.aliyun.com/api/ARMS/2019-08-08/DescribeTraceLicenseKey) 获取
-3. **百炼 API 密钥**：从 [模型工作室](https://help.aliyun.com/zh/model-studio/developer-reference/get-api-key) 获取
-4. **Terraform**：版本 >= 1.0
-5. **阿里云 Provider**：版本 >= 1.210.0
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -105,7 +79,7 @@ module "ai_observability_system" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | 1.269.0 |
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | >= 1.210.0 |
 
 ## Modules
 
